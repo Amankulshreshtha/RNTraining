@@ -10,8 +10,24 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Register">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: 'red',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{
+            headerStyle: {
+              backgroundColor: 'skyblue',
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
