@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './Home';
+import 'react-native-gesture-handler';
+import HomeScreen from './components/Navigations/Home';
 import Register from './Register';
 
 const Stack = createNativeStackNavigator();
