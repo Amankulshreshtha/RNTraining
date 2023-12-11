@@ -10,7 +10,6 @@ import {
   Alert,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SplashScreen from 'react-native-splash-screen';
 
 const PharmacyModal = ({setModalVisible, savePharmacy, editedPharmacy}) => {
   const [pharmacyName, setPharmacyName] = useState('');

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SplashScreen from 'react-native-splash-screen';
-import PharmacyModal from '../ModalScreen/PharmacyModal';
+import PharmacyModal from './src/modal/PharmacyModal';
 
 const PharmaData = () => {
   const [pharmas, setPharmas] = useState([]);
