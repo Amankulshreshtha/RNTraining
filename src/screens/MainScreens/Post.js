@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Button, Image, StyleSheet} from 'react-native';
+import {View, Button, Image, StyleSheet, Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {postData} from '../../redux/actions/actions';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
@@ -15,10 +15,14 @@ const Post = () => {
       mediaType: 'photo',
     };
 
-    if (fromCamera) {
-      launchCamera(options, handleImageResponse);
-    } else {
-      launchImageLibrary(options, handleImageResponse);
+    try {
+      if (fromCamera) {
+        launchCamera(options, handleImageResponse);
+      } else {
+        launchImageLibrary(options, handleImageResponse);
+      }
+    } catch (error) {
+      console.log('Error launching camera or image library:', error);
     }
   };
 
@@ -66,7 +70,15 @@ const Post = () => {
   const handlePostData = async () => {
     if (selectedImageData && user.length > 0 && user[0].id) {
       try {
+        // Dispatch action to post data
         await dispatch(postData(selectedImageData, user[0].id));
+        // Show success popup
+        Alert.alert(
+          'Success',
+          'Data successfully uploaded!',
+          [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+          {cancelable: false},
+        );
       } catch (error) {
         console.error('Error posting data:', error);
       }

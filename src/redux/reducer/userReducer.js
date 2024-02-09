@@ -1,7 +1,7 @@
 import * as types from '../actions/types';
 
 const initialState = {
-  user: [], 
+  user: [],
   ownerId: null,
   currentuser: null,
   profile: null,
@@ -34,16 +34,15 @@ const userReducer = (state = initialState, action) => {
         ...state,
         ownerId: action.payload,
       };
-    case types.PROFILE: 
+    case types.PROFILE:
       return {
         ...state,
         profile: action.payload,
       };
-      case types.LOGOUT_USER:
-        return {
-          ...initialState, 
-        };
-        
+    case types.LOGOUT_USER:
+      return {
+        ...initialState,
+      };
 
     // PERSIST_USER_DATA case removed as persistence is handled elsewhere
     default:

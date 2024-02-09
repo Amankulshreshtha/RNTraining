@@ -1,17 +1,24 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, POSTDATA, FETCH_COMMENTS, STORE_OWNERS_ID, PROFILE } from './types';
-import { userReducer } from '../reducer';
+import {
+  REGISTER_USER,
+  LOGIN_USER,
+  LOGOUT_USER,
+  POSTDATA,
+  FETCH_COMMENTS,
+  STORE_OWNERS_ID,
+  PROFILE,
+} from './types';
+import {userReducer} from '../reducer';
 
 const BASE_URL = 'https://dummyapi.io/data/v1/';
 const API_KEY = '659d663b3089b3d68c223c8d';
 
-
-export const persistUserData = (userData) => {
-  return async (dispatch) => {
+export const persistUserData = userData => {
+  return async dispatch => {
     try {
       await AsyncStorage.setItem('userData', JSON.stringify(userData));
-      console.log("userData", userData);
+      console.log('userData', userData);
     } catch (error) {
       console.error('Error persisting user data:', error);
       throw error;
@@ -22,10 +29,12 @@ export const persistUserData = (userData) => {
 export const registerUser = (firstName, lastName, email) => {
   return async (dispatch, getState) => {
     try {
-      const existingUser = getState().userReducer.user.find((user) => user.email === email);
+      const existingUser = getState().userReducer.user.find(
+        user => user.email === email,
+      );
 
       if (existingUser) {
-        dispatch(updateUserData(existingUser.id, { firstName, lastName, email }));
+        dispatch(updateUserData(existingUser.id, {firstName, lastName, email}));
       } else {
         const response = await axios.post(
           `${BASE_URL}user/create`,
@@ -39,7 +48,7 @@ export const registerUser = (firstName, lastName, email) => {
             headers: {
               'app-id': API_KEY,
             },
-          }
+          },
         );
 
         dispatch({
@@ -63,15 +72,12 @@ export const registerUser = (firstName, lastName, email) => {
 const updateUserData = (userId, updatedData) => {
   return {
     type: UPDATE_USER_DATA,
-    payload: { userId, updatedData },
+    payload: {userId, updatedData},
   };
 };
 
-
-
-
-export const loginUser = (email) => {
-  return async (dispatch) => {
+export const loginUser = email => {
+  return async dispatch => {
     try {
       const userData = await AsyncStorage.getItem('userData');
 
@@ -85,8 +91,7 @@ export const loginUser = (email) => {
           });
 
           console.log('Logged in as:', owner);
-        } 
-        else {
+        } else {
           throw new Error('User not registered');
         }
       } else {
@@ -100,23 +105,19 @@ export const loginUser = (email) => {
 };
 
 export const postData = (image, ownerId) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const requestData = {
         image,
         owner: ownerId,
       };
 
-      const response = await axios.post(
-        `${BASE_URL}post/create`,
-        requestData,
-        {
-          headers: {
-            'app-id': API_KEY,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.post(`${BASE_URL}post/create`, requestData, {
+        headers: {
+          'app-id': API_KEY,
+          'Content-Type': 'application/json',
+        },
+      });
 
       console.log('Post Response:', response);
 
@@ -132,7 +133,7 @@ export const postData = (image, ownerId) => {
 };
 
 export const postComment = (postId, commentText) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const response = await axios.post(
         `${BASE_URL}post/${postId}/comment/create`,
@@ -143,7 +144,7 @@ export const postComment = (postId, commentText) => {
           headers: {
             'app-id': API_KEY,
           },
-        }
+        },
       );
 
       dispatch({
@@ -157,9 +158,8 @@ export const postComment = (postId, commentText) => {
   };
 };
 
-
 export const ProfileData = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const userData = await AsyncStorage.getItem('userData');
 
@@ -173,7 +173,7 @@ export const ProfileData = () => {
               'Content-Type': 'application/json',
               'app-id': API_KEY,
             },
-          }
+          },
         );
 
         const userPostsResponse = await axios.get(
@@ -183,10 +183,13 @@ export const ProfileData = () => {
               'Content-Type': 'application/json',
               'app-id': API_KEY,
             },
-          }
+          },
         );
 
-        if (userDetailsResponse.status === 200 && userPostsResponse.status === 200) {
+        if (
+          userDetailsResponse.status === 200 &&
+          userPostsResponse.status === 200
+        ) {
           dispatch({
             type: PROFILE,
             payload: userDetailsResponse.data,
@@ -211,4 +214,3 @@ export const ProfileData = () => {
     }
   };
 };
-

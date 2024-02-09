@@ -6,7 +6,6 @@ const Logout = () => {
   const navigation = useNavigation(); // Initialize navigation object
 
   const handleLogout = () => {
-    // Add any additional logout logic (e.g., clear async storage, etc.)
     console.log('Logout successful');
     navigation.navigate('Login'); // Navigate to Login screen
   };
