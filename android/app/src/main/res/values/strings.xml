@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">project_second</string>
+    <string name="web_client_id"></string>
+    <string name="facebook_app_id">7044514502335607</string>
+    <string name="facebook_client_token">37d7c7b5e946afc7810a744e603a8e93</string>
 </resources>
