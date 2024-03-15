@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ImagePicker from 'react-native-image-picker';
 import ModalComponent from './ModalComponents';
-// import Comments from './Comments';
+import Comments from './Comments';
 import Post from './Post';
 import Profile from './Profile';
 import HomeScreenContent from './HomeScreenContent';
@@ -90,9 +90,9 @@ const Home = ({ navigation }) => {
         tabBarActiveTintColor="#0080ff"
         tabBarInactiveTintColor="gray"
       >
-        <Tab.Screen name="home" component={HomeScreenContent} />
+        <Tab.Screen name="home" component={HomeScreenContent} options={{ headerShown: false }} />
         <Tab.Screen name="post" component={Post} />
-        {/* <Tab.Screen name="comments" component={Comments} /> */}
+        <Tab.Screen name="comments" component={Comments} />
         <Tab.Screen name="profile" component={Profile} />
       </Tab.Navigator>
     </View>

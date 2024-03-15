@@ -2,49 +2,49 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import axios from 'axios';
 
-const BASE_URL = 'https://dummyapi.io/data/v1/';
-const API_KEY = '659d663b3089b3d68c223c8d';
-
-const Comments = ({ postId }) => {
+const Comments = () => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    // Fetch comments when the component mounts
     fetchComments();
   }, []);
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}post/${postId}/comment`, {
+      const response = await axios.get('https://dummyapi.io/data/v1/comment?export=1', {
         headers: {
-          'app-id': API_KEY,
+          'app-id': '659d663b3089b3d68c223c8d',
         },
       });
 
-      setComments(response.data);
+      console.log('Response data:', response.data);
+
+      setComments(response.data.data); // Set all comments directly
     } catch (error) {
       console.error('Error fetching comments:', error);
     }
   };
 
+  console.log('Comments:', comments);
+
   return (
-    <View style={styles.tabContent}>
-      {/* Render comments using FlatList */}
-      <FlatList
+    <View style={styles.container}>
+     <FlatList
         data={comments}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.commentContainer}>
-            <Text>{item.comment}</Text>
-          </View>
-        )}
-      />
+        <View style={styles.commentContainer}>
+      <Text>{item.message}</Text>
+    </View>
+  )}
+/>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  tabContent: {
+  container: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,

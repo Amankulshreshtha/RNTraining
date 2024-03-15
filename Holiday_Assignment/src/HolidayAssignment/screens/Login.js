@@ -80,7 +80,7 @@ const Login = ({ navigation }) => {
       <View style={styles.containerLogin}>
         <View style={styles.email_container}>
           <View>
-            <Text style={styles.inputText}>Email</Text>
+            <Text style={styles.inputText}>Username</Text>
             <TextInput
               style={styles.email}
               autoCorrect={false}
@@ -139,8 +139,11 @@ const styles = StyleSheet.create({
   containerLogin: {
     flex: 0.5,
     justifyContent: 'space-around',
+    // backgroundColor: 'red',
   },
-  login: {},
+  login: {
+   
+  },
   login_text: {
     color: 'black',
     fontSize: 20,
@@ -153,13 +156,15 @@ const styles = StyleSheet.create({
   },
   email_container: {
     flex: 0.7,
+    // backgroundColor: 'red',
   },
   email: {
     backgroundColor: '#F2F2F2',
-    fontSize: 18,
-    borderRadius: 20,
+    fontSize: 22,
+    borderRadius: 10,
     paddingLeft: 20,
     borderWidth: 1,
+    borderColor: '#1C6758',
   },
   login_container: {
     flex: 0.5,
@@ -170,15 +175,18 @@ const styles = StyleSheet.create({
   login_btn: {
     backgroundColor: '#1C6758',
     width: '100%',
-    borderRadius: 20,
+    borderRadius: 10,
     marginBottom: 15,
   },
-  signUp_container: {},
+  signUp_container: {
+    justifyContent: 'center',
+  },
   act_signup: {
     fontSize: 16,
+    color: '#000000',
   },
   signUp: {
-    color: 'blue',
+    color: '#1C6758',
     fontSize: 16,
   },
   pressableLogin: {
@@ -189,15 +197,16 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   inputText: {
-    fontSize: 18,
+    fontSize: 20,
     color: 'black',
+    marginTop: 10
   },
   forgotPasswordContainer: {
     marginTop: 10,
     alignItems: 'flex-end',
   },
   forgotPasswordText: {
-    color: 'blue',
+    color: '#1C6758',
     fontSize: 14,
   },
 });

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, TextInput, Button } from 'react-native';
 import axios from 'axios';
 import Modal from 'react-native-modal';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HomeScreenContent = () => {
   const [posts, setPosts] = useState([]);
@@ -39,9 +40,9 @@ const HomeScreenContent = () => {
       {item.image && (
         <Image source={{ uri: item.image }} style={styles.postImage} />
       )}
-      <TouchableOpacity style={styles.commentButton} onPress={() => handleCommentPress(item)}>
-        <Text style={styles.commentButtonText}>Comment</Text>
-      </TouchableOpacity>
+       <TouchableOpacity style={styles.commentButton} onPress={() => handleCommentPress(item)}>
+      <Icon name="comment" size={20} color="grey" /> 
+    </TouchableOpacity>
     </View>
   );
 
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   commentButton: {
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
     padding: 10,
     borderRadius: 5,
     marginTop: 8,

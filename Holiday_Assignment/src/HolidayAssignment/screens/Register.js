@@ -22,9 +22,10 @@ const Register = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.containerHeading}>
-        <Text style={styles.register}>Register</Text>
+              
         <View style={styles.register}>
-          <Text style={styles.registerText}>Create your account</Text>
+        <Text style={styles.register_PersnalInfo}>Personal Information</Text>
+          <Text style={styles.registerText}> Please fill the following</Text>
         </View>
       </View>
       <View style={styles.containerRegister}>
@@ -87,36 +88,48 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: 'space-around',
   },
-  register: {},
+  register_PersnalInfo: {
+    marginTop: 20,
+    fontSize: 20,
+    fontWeight: '800',
+    color: 'black'
+  },
   registerText: {
+    marginTop: 0,
     color: 'black',
     fontSize: 20,
     marginTop: 10,
   },
-  containerHeading: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  // containerHeading: {
+  //   // justifyContent: 'center',
+  //   // alignItems: 'center',
+  // },
   registerContainer: {
-    flex: 0.5,
+    flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
   inputContainer: {
-    flex: 0.7,
+    flex: 0.9,
+   
   },
   input: {
     backgroundColor: '#F2F2F2',
-    fontSize: 18,
-    borderRadius: 20,
+    fontSize: 22,
+    borderRadius: 10,
     paddingLeft: 20,
     borderWidth: 1,
+    borderColor: '#1C6758'
+    // marginTop: 10
   },
   registerButton: {
-    backgroundColor: 'blue',
+    // direction: 'flex-end',
+    // alignSelf: 'flex-end',
+    
+    backgroundColor: '#1C6758',
     width: '100%',
-    borderRadius: 20,
+    borderRadius: 10,
     marginBottom: 15,
   },
   pressableRegister: {
@@ -129,6 +142,7 @@ const styles = StyleSheet.create({
   inputText: {
     fontSize: 18,
     color: 'black',
+    marginTop: 15
   },
   AlreadyhaveAccount: {
     color: 'black',

@@ -43,6 +43,7 @@ const userReducer = (state = initialState, action) => {
         return {
           ...initialState, 
         };
+        
 
     // PERSIST_USER_DATA case removed as persistence is handled elsewhere
     default:

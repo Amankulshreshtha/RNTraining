@@ -6,7 +6,6 @@ import { userReducer } from '../reducer';
 const BASE_URL = 'https://dummyapi.io/data/v1/';
 const API_KEY = '659d663b3089b3d68c223c8d';
 
-// Define persistUserData function here or import it from another file
 
 export const persistUserData = (userData) => {
   return async (dispatch) => {
@@ -67,6 +66,8 @@ const updateUserData = (userId, updatedData) => {
     payload: { userId, updatedData },
   };
 };
+
+
 
 
 export const loginUser = (email) => {
@@ -156,7 +157,6 @@ export const postComment = (postId, commentText) => {
   };
 };
 
-// ... (your existing imports)
 
 export const ProfileData = () => {
   return async (dispatch) => {
